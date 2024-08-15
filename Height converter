@@ -1,63 +1,57 @@
-def cm_to_feet(cm):
-    return cm * 0.0328084
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height Converter</title>
+    <script>
+        function convertHeight() {
+            const cmInput = document.getElementById('cmInput').value;
+            const feetInput = document.getElementById('feetInput').value;
+            const inchesInput = document.getElementById('inchesInput').value;
 
-def feet_to_cm(feet):
-    return feet / 0.0328084
-
-def cm_to_inches(cm):
-    return cm * 0.393701
-
-def inches_to_cm(inches):
-    return inches / 0.393701
-
-def cm_to_meters(cm):
-    return cm / 100
-
-def meters_to_cm(meters):
-    return meters * 100
-
-def feet_to_inches(feet):
-    return feet * 12
-
-def inches_to_feet(inches):
-    return inches / 12
-
-print("Select conversion:")
-print("1. Centimeters to Feet")
-print("2. Feet to Centimeters")
-print("3. Centimeters to Inches")
-print("4. Inches to Centimeters")
-print("5. Centimeters to Meters")
-print("6. Meters to Centimeters")
-print("7. Feet to Inches")
-print("8. Inches to Feet")
-
-choice = input("Enter choice (1/2/3/4/5/6/7/8): ")
-
-if choice in ('1', '2', '3', '4', '5', '6', '7', '8'):
-    if choice == '1':
-        cm = float(input("Enter height in centimeters: "))
-        print("Height in feet:", cm_to_feet(cm))
-    elif choice == '2':
-        feet = float(input("Enter height in feet: "))
-        print("Height in centimeters:", feet_to_cm(feet))
-    elif choice == '3':
-        cm = float(input("Enter height in centimeters: "))
-        print("Height in inches:", cm_to_inches(cm))
-    elif choice == '4':
-        inches = float(input("Enter height in inches: "))
-        print("Height in centimeters:", inches_to_cm(inches))
-    elif choice == '5':
-        cm = float(input("Enter height in centimeters: "))
-        print("Height in meters:", cm_to_meters(cm))
-    elif choice == '6':
-        meters = float(input("Enter height in meters: "))
-        print("Height in centimeters:", meters_to_cm(meters))
-    elif choice == '7':
-        feet = float(input("Enter height in feet: "))
-        print("Height in inches:", feet_to_inches(feet))
-    elif choice == '8':
-        inches = float(input("Enter height in inches: "))
-        print("Height in feet:", inches_to_feet(inches))
-else:
-    print("Invalid input")
+            if (cmInput) {
+                // Convert cm to feet and inches
+                const cm = parseFloat(cmInput);
+                const totalInches = cm / 2.54;
+                const feet = Math.floor(totalInches / 12);
+                const inches = Math.round(totalInches % 12);
+                document.getElementById('feetOutput').value = feet;
+                document.getElementById('inchesOutput').value = inches;
+            } else if (feetInput || inchesInput) {
+                // Convert feet and inches to cm
+                const feet = parseFloat(feetInput) || 0;
+                const inches = parseFloat(inchesInput) || 0;
+                const totalInches = (feet * 12) + inches;
+                const cm = totalInches * 2.54;
+                document.getElementById('cmOutput').value = cm.toFixed(2);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Height Converter</h1>
+    <div>
+        <h2>Centimeters to Feet and Inches</h2>
+        <label for="cmInput">Centimeters:</label>
+        <input type="number" id="cmInput" oninput="convertHeight()">
+        <br>
+        <label for="feetOutput">Feet:</label>
+        <input type="number" id="feetOutput" readonly>
+        <br>
+        <label for="inchesOutput">Inches:</label>
+        <input type="number" id="inchesOutput" readonly>
+    </div>
+    <div>
+        <h2>Feet and Inches to Centimeters</h2>
+        <label for="feetInput">Feet:</label>
+        <input type="number" id="feetInput" oninput="convertHeight()">
+        <br>
+        <label for="inchesInput">Inches:</label>
+        <input type="number" id="inchesInput" oninput="convertHeight()">
+        <br>
+        <label for="cmOutput">Centimeters:</label>
+        <input type="number" id="cmOutput" readonly>
+    </div>
+</body>
+</html>
