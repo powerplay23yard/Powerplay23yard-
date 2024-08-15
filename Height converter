@@ -1,0 +1,63 @@
+def cm_to_feet(cm):
+    return cm * 0.0328084
+
+def feet_to_cm(feet):
+    return feet / 0.0328084
+
+def cm_to_inches(cm):
+    return cm * 0.393701
+
+def inches_to_cm(inches):
+    return inches / 0.393701
+
+def cm_to_meters(cm):
+    return cm / 100
+
+def meters_to_cm(meters):
+    return meters * 100
+
+def feet_to_inches(feet):
+    return feet * 12
+
+def inches_to_feet(inches):
+    return inches / 12
+
+print("Select conversion:")
+print("1. Centimeters to Feet")
+print("2. Feet to Centimeters")
+print("3. Centimeters to Inches")
+print("4. Inches to Centimeters")
+print("5. Centimeters to Meters")
+print("6. Meters to Centimeters")
+print("7. Feet to Inches")
+print("8. Inches to Feet")
+
+choice = input("Enter choice (1/2/3/4/5/6/7/8): ")
+
+if choice in ('1', '2', '3', '4', '5', '6', '7', '8'):
+    if choice == '1':
+        cm = float(input("Enter height in centimeters: "))
+        print("Height in feet:", cm_to_feet(cm))
+    elif choice == '2':
+        feet = float(input("Enter height in feet: "))
+        print("Height in centimeters:", feet_to_cm(feet))
+    elif choice == '3':
+        cm = float(input("Enter height in centimeters: "))
+        print("Height in inches:", cm_to_inches(cm))
+    elif choice == '4':
+        inches = float(input("Enter height in inches: "))
+        print("Height in centimeters:", inches_to_cm(inches))
+    elif choice == '5':
+        cm = float(input("Enter height in centimeters: "))
+        print("Height in meters:", cm_to_meters(cm))
+    elif choice == '6':
+        meters = float(input("Enter height in meters: "))
+        print("Height in centimeters:", meters_to_cm(meters))
+    elif choice == '7':
+        feet = float(input("Enter height in feet: "))
+        print("Height in inches:", feet_to_inches(feet))
+    elif choice == '8':
+        inches = float(input("Enter height in inches: "))
+        print("Height in feet:", inches_to_feet(inches))
+else:
+    print("Invalid input")
